@@ -1,0 +1,214 @@
+* Config :noexport:
+
+** LaTeX Config
+#+begin_src emacs-lisp :exports none  :results none :eval always
+  (setq org-latex-logfiles-extensions
+        (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav"
+  	      "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc"
+  	      "ps" "spl" "bbl" "xmpi" "run.xml" "bcf")))
+  (add-to-list 'org-latex-classes
+  	     '("altacv" "\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+
+  % Change the page layout if you need to
+  \\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+  % Use roboto and lato for fonts
+  \\renewcommand{\\familydefault}{\\sfdefault}
+
+  % Change the colours if you want to
+  \\definecolor{SlateGrey}{HTML}{2E2E2E}
+  \\definecolor{LightGrey}{HTML}{666666}
+  \\definecolor{DarkPastelRed}{HTML}{080845}
+  \\definecolor{PastelRed}{HTML}{0D0D8F}
+  \\definecolor{GoldenEarth}{HTML}{C1E792}
+  \\colorlet{name}{black}
+  \\colorlet{tagline}{PastelRed}
+  \\colorlet{heading}{DarkPastelRed}
+  \\colorlet{headingrule}{GoldenEarth}
+  \\colorlet{subheading}{PastelRed}
+  \\colorlet{accent}{PastelRed}
+  \\colorlet{emphasis}{SlateGrey}
+  \\colorlet{body}{LightGrey}
+
+  % Change some fonts, if necessary
+  \\renewcommand{\\namefont}{\\Huge\\rmfamily\\bfseries}
+  \\renewcommand{\\personalinfofont}{\\footnotesize}
+  \\renewcommand{\\cvsectionfont}{\\LARGE\\rmfamily\\bfseries}
+  \\renewcommand{\\cvsubsectionfont}{\\large\\bfseries}
+
+  % Change the bullets for itemize and rating marker
+  % for \cvskill if you want to
+  \\renewcommand{\\itemmarker}{{\\small\\textbullet}}
+  \\renewcommand{\\ratingmarker}{\\faCircle}
+  "
+
+  	       ("\\cvsection{%s}" . "\\cvsection*{%s}")
+  	       ("\\cvevent{%s}" . "\\cvevent*{%s}")))
+  (setq org-latex-packages-alist 'nil)
+  (setq org-latex-with-hyperref nil)
+  (setq org-latex-default-packages-alist
+        '(("rm" "roboto"  t)
+  	("" "lato" t)
+  	("" "paracol" t)
+  	))
+#+end_src
+#+latex_class: altacv
+#+latex_header: \columnratio{0.6}
+#+latex_header: \usepackage[bottom]{footmisc}
+
+*** Bibliography
+
+#+bibliography: resume.bib
+#+cite_export: biblatex apa
+
+
+** Exporter Settings
+#+AUTHOR: Druhan Rajiv Shah
+#+export_file_name: ./resume.pdf
+#+options: toc:nil title:nil H:1
+
+** Macros
+#+macro: cvevent \cvevent{$1}{$2}{$3}{$4}
+#+macro: cvachievement \cvachievement{$1}{$2}{$3}{$4}
+#+macro: cvtag \cvtag{$1}
+#+macro: divider \divider
+#+macro: par \par
+#+macro: par-div \par\divider
+#+macro: new-page \newpage
+
+
+* CV Header :ignore:
+
+** Photo & Tagline :ignore:
+#+begin_export latex
+\name{Druhan Shah}
+\tagline{Undergraduate Student Researcher}
+#+end_export
+
+** Personal Info :ignore:
+#+begin_export latex
+\personalinfo{
+  \email{druhanrshah@gmail.com}
+  \phone{+91 89518 19550}
+  \location{Hyderabad, India}
+  \github{DruhanShah}
+  \linkedin{druhan-shah}
+}
+\makecvheader
+#+end_export
+
+
+* CV Column one                                                        :ignore:
+#+begin_export latex
+\begin{paracol}{2}
+#+end_export
+
+
+** Education
+
+*** M.S. in Computational Linguistics by Research                    :ignore:
+{{{cvevent(MS in Computational Linguistics by Research, IIIT Hyderabad, Nov 2021 -- Ongoing)}}}
+{{{par-div}}}
+
+*** B.Tech. (Hons.) in Computer Science                              :ignore:
+{{{cvevent(BTech (Hons) in Computer Science, IIIT Hyderabad, Nov 2021 -- Ongoing)}}}
+{{{par}}}
+
+** Experience
+
+*** Undergraduate Researcher :ignore:
+{{{cvevent(Undergraduate Researcher, Language Technologies Research Centre, May 2023 -- Ongoing, IIIT Hyderabad)}}}
+
+Exploring Mechanistic Interpretability of Language Models using formal languages.
+{{{par}}}
+
+** Projects
+
+*** Numerical Feature Extraction                                     :ignore:
+{{{cvevent(Numerical Feature Extraction, Amazon ML Challenge, Sep 2024)}}}
+
+Devised a novel architecture for a deep neural model to extract numerical features like height, weight, etc. from product images. Achieved an F1 score of 0.693 and achieved Rank 14 in the contest.
+{{{par-div}}}
+
+*** Parse Probing with PEGs                                          :ignore:
+{{{cvevent(Parse Probing with PEGs,, Ongoing)}}}
+
+Investigating sequence models trained to replicate complex recognition grammars using mechanistic techniques to uncover parse state information.
+{{{par-div}}}
+
+*** Indic Morpho-semantic Circuits                                   :ignore:
+{{{cvevent(ContractNLI, Course Project: Advanced NLP, Ongoing)}}}
+
+Uncovering circuits in monolingual language models for semantic role detection and investigating their role on morphological complexity, particularly with Indian languages.
+{{{par-div}}}
+
+*** ContractNLI                                                      :ignore:
+{{{cvevent(ContractNLI, Course Project: Introduction to NLP)}}}
+
+Implemented architectural changes to baseline models trained to perform NLI on legal documents with evidential spans, achieving near-SotA performance.
+
+
+* CV Column two                                                        :ignore:
+#+begin_export latex
+\switchcolumn
+#+end_export
+
+** Volunteering
+
+*** PLO Problem Committee :ignore:
+{{{cvevent(Problem Committee and Jury, Panini Linguistics Olympiad, Jan 2024 -- Ongoing)}}}
+
+Contributed and tested problems for the Panini Linguistics Olympiad and evaluated submissions for the National and Asia-Pacific rounds.
+{{{par-div}}}
+
+*** Theory Group :ignore:
+{{{cvevent(Coordinator\, Theory Group, Theory Group @ IIITH, May 2023 -- Jun 2024)}}}
+
+Organized discussions and seminars on various topics including theoretical CS, mathematics, music theory and physics.
+
+{{{par}}}
+
+** Achievements
+
+*** Amazon ML Challenge :ignore:
+{{{cvachievement(\faTrophy, Amazon ML Challenge, Rank 14 in India)}}}
+
+{{{divider}}}
+
+*** Dean's List :ignore:
+{{{cvachievement(\faTrophy, Dean's List Award, Spring '22 and Monsoon '22)}}}
+
+{{{divider}}}
+
+*** Olympiads :ignore:
+{{{cvachievement(\faTrophy, International Olympiads, Mathematics\, Linguistics\, Informatics\, Astronomy)}}}
+
+{{{par}}}
+
+** Skills
+{{{cvevent(Languages:)}}}
+{{{cvtag(Python)}}}
+{{{cvtag(C/C++)}}}
+{{{cvtag(JavaScript)}}}
+{{{cvtag(Lisp)}}}
+{{{cvtag(Lua)}}}
+{{{cvtag(\LaTeX)}}}
+{{{par-div}}}
+
+{{{cvevent(Libraries and Tools:)}}}
+{{{cvtag(Pytorch)}}}
+{{{cvtag(Transformers)}}}
+{{{cvtag(React)}}}
+{{{cvtag(Astro.js)}}}
+{{{cvtag(Vim)}}}
+{{{cvtag(Emacs)}}}
+{{{cvtag(Git)}}}
+{{{cvtag(SLURM)}}}
+{{{par}}}
+
+
+* Backmatter :ignore:
+#+begin_export latex
+\end{paracol}
+\end{document}
+#+end_export
