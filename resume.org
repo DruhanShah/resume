@@ -137,7 +137,7 @@ Investigating sequence models trained to replicate complex recognition grammars 
 {{{par-div}}}
 
 *** Indic Morpho-semantic Circuits                                   :ignore:
-{{{cvevent(Indic Morphosemantic Circuits, Course Project: Advanced NLP, Ongoing)}}}
+{{{cvevent(Indic Morphosemantic Circuits,, Ongoing)}}}
 
 Uncovering circuits in monolingual language models for semantic role detection and investigating their role on morphological complexity, particularly with Indian languages.
 {{{par-div}}}
