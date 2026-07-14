@@ -1,150 +1,181 @@
-% Created 2025-12-15 Mon 18:10
-% Intended LaTeX compiler: pdflatex
-\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
+\documentclass[11pt]{article}
 
-% Change the page layout if you need to
-\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
 
-% Use roboto and lato for fonts
-\renewcommand{\familydefault}{\sfdefault}
+\usepackage[sfdefault,semibold,lf]{FiraSans}
+\usepackage[a4paper,margin=1.75cm]{geometry}
 
-% Change the colours if you want to
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\definecolor{DarkPastelRed}{HTML}{080845}
-\definecolor{PastelRed}{HTML}{0D0D8F}
-\definecolor{GoldenEarth}{HTML}{C1E792}
-\colorlet{name}{black}
-\colorlet{tagline}{PastelRed}
-\colorlet{heading}{DarkPastelRed}
-\colorlet{headingrule}{GoldenEarth}
-\colorlet{subheading}{PastelRed}
-\colorlet{accent}{PastelRed}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{141E61}
 
-% Change some fonts, if necessary
-\renewcommand{\namefont}{\Huge\rmfamily\bfseries}
-\renewcommand{\personalinfofont}{\footnotesize}
-\renewcommand{\cvsectionfont}{\LARGE\rmfamily\bfseries}
-\renewcommand{\cvsubsectionfont}{\large\bfseries}
+\newcommand{\linkicon}{
+  \color{gray}{\footnotesize\raisebox{1pt}{\faIcon{external-link-alt}}}
+}
 
-% Change the bullets for itemize and rating marker
-% for cvskill if you want to
-\renewcommand{\itemmarker}{{\small\textbullet}}
-\renewcommand{\ratingmarker}{\faCircle}
+\setcounter{secnumdepth}{0}
+\pdfgentounicode=1
 
-\usepackage[rm]{roboto}
-\usepackage{lato}
-\usepackage{paracol}
-\columnratio{0.6}
-\usepackage[bottom]{footmisc}
-\author{Druhan Rajiv Shah}
-\date{\today}
-\title{}
-\usepackage[style=apa]{biblatex}
-\addbibresource{resume.bib}
-\addbibresource{~/Research/Bibliography/NLP-Stuff.bib}
-\addbibresource{~/Research/Bibliography/Math-Stuff.bib}
-\addbibresource{~/Research/Bibliography/Other-Fun-Stuff.bib}
+
+%====== LIST FORMATTING ======
+\usepackage{enumitem}
+\setlist[itemize]{nosep, left=0pt .. 1.5em}
+\setlist[enumerate]{left=0pt..1.5em}
+\setlist[description]{itemsep=0pt}
+
+
+%====== TITLE FORMATTING ======
+\usepackage{xhfill}
+\usepackage{soul}
+\newcommand{\midrule}[1]{
+  \leavevmode
+  \xrfill[.5ex]{1pt}[accent]~\so{#1}~\xrfill[.5ex]{1pt}[accent]
+}
+
+\usepackage{titlesec}
+\titlespacing{\section}{0pt}{*4}{*1}
+\titlespacing{\subsection}{0pt}{*3}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\titleformat{\section}{\large\bfseries\uppercase}{}{}{\midrule}
+\titleformat*{\subsection}{\large\bfseries\scshape}
+
+
+%====== CUSTOM COMMANDS ======
+\newcommand{\aux}[1]{
+  $|$ \space {\normalfont\itshape #1}%
+}
+
+\newcommand{\rside}[1]{
+  \hfill {\normalfont\color{accent} #1}%
+}
+
+%====== FOOTER ======
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+
+% Replace 'Star Rover' with your name in next line
+\fancyfoot[C]{\small\color{gray} Druhan Shah -- Page \thepage\ of \pageref*{LastPage}}
+% \pagestyle{empty} 
+% uncomment previous line to hide page numbering
+
+
+%====== PACKAGES ======
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage[bookmarks=false,hidelinks]{hyperref}
+
+
+%====== FINISH PREAMBLE ======
+
+%====== DOCUMENT STARTS HERE ======
+
 \begin{document}
 
-\name{Druhan Shah}
-\tagline{Undergraduate Student Researcher}
-\personalinfo{
-  \email{druhanrshah@gmail.com}
-  \phone{+91 89518 19550}
-  \location{Hyderabad, India}
-  \github{DruhanShah}
-  \linkedin{druhan-shah}
-}
-\makecvheader
-\begin{paracol}{2}
-\cvsection{Education}
-\label{sec:org8756e66}
+%====== BANNER ======
 
-\cvevent{MS in Computational Linguistics by Research}{ IIIT Hyderabad}{ Nov 2021 -- Ongoing}{}
-\par\divider
+\begin{center}
+  {
+    \fontsize{24}{12} 
+    \fontseries{heavy}\selectfont
+    \color{accent} 
+    DRUHAN SHAH % YOUR NAME HERE
+  } \\ \medskip
 
-\cvevent{BTech (Hons) in Computer Science}{ IIIT Hyderabad}{ Nov 2021 -- Ongoing}{}
-\par
-\cvsection{Experience}
-\label{sec:org2d1c262}
+  {
+    \fontsize{10}{8}
+    \fontseries{light}\selectfont
+    \href{mailto:druhanshah@gmail.com}{{\color{gray}{\faEnvelope}} druhanshah@gmail.com} \quad 
+    \href{https://github.com/DruhanShah}{{\color{gray}{\faGithub}} DruhanShah} \quad
+    \href{https://www.linkedin.com/in/druhan-shah}{{\color{gray}{\faLinkedin}} druhan-shah} \quad
+    \href{https://druhanshah.github.io/}{{\color{gray}{\faLink}} druhanshah.github.io} 
+  }
+\end{center}
 
-\cvevent{Undergraduate Researcher}{ Language Technologies Research Centre}{ May 2023 -- Ongoing}{ IIIT Hyderabad}
+%====== BANNER END ======
 
-Exploring Mechanistic Interpretability of Language Models using formal languages.
-\par
-\cvsection{Projects}
-\label{sec:orge4d30b5}
 
-\cvevent{Numerical Feature Extraction}{ Amazon ML Challenge}{ Sep 2024}{}
+\section{Education}
+%==========
+\subsection{IIIT Hyderabad \aux{B.Tech. (Hons) in Computer Science} \rside{2021 --}}
+  \begin{itemize}
+  \item Relevant courses: Advanced NLP, Operating Systems and Networks
+  \item Dean's Merit List 2022
+\end{itemize}
 
-Devised a novel architecture for a deep neural model to extract numerical features like height, weight, etc. from product images. Achieved an F1 score of 0.693 and achieved Rank 14 in the contest.
-\par\divider
+\subsection{IIIT Hyderabad \aux{M.S by Research in Computational Linguistics} \rside{2021 --}}
+  \begin{itemize}
+  \item Relevant courses: Applications of Language Models, Information Retrieval and Extraction
+\end{itemize}
 
-\cvevent{Parse Probing with PEGs}{}{ Ongoing}{}
 
-Investigating sequence models trained to replicate complex recognition grammars using mechanistic techniques to uncover parse state information.
-\par\divider
+\section{Experience}
+%==========
+\subsection{Language Technologies Research Centre}
+\subsubsection{Student Researcher \rside{May 2023 --}}
+\begin{itemize}
+  \item Explored Interpretability methods for neural Language Models.
+  \item Studying the use of Formal Languages to quantify the expressivity of Transformers.
+\end{itemize}
 
-\cvevent{Indic Morphosemantic Circuits}{}{ Ongoing}{}
+\subsection{IIIT Hyderabad}
+\subsubsection{Head Teaching Assistant \rside{Jan 2026 --}}
+\begin{itemize}
+  \item Led teams of teaching assistants for the Introduction to NLP and Advanced NLP courses.
+  \item Responsible for division of tasks across the team, and contributing to course planning.
+  \item Set and evaluated quizzes and homework assignments, and conducted tutorials.
+\end{itemize}
 
-Uncovering circuits in monolingual language models for semantic role detection and investigating their role on morphological complexity, particularly with Indian languages.
-\par\divider
 
-\cvevent{ContractNLI}{ Course Project: Introduction to NLP}{}{}
+\section{Volunteering}
+\subsection{Panini Linguistics Olympiad}
+\subsubsection{Problem Committee Member \rside{Jan 2024 --}}
+\begin{itemize}
+\item Contributed problems for the national and pre-national stages of the Panini Linguistics Olympiad.
+\item Tested and critiqued problems for the national stage and the training camp stages.
+\end{itemize}
+\subsubsection{Teaching Assistant \rside{Apr 2023 -- May 2023}}
+\begin{itemize}
+\item Conducted tutorial sessions, and trained selected students to represent India at the IOL.
+\item Evaluated submissions for the Indian participants of the Asia-Pacific Linguistics Olympiad.
+\end{itemize}
 
-Implemented architectural changes to baseline models trained to perform NLI on legal documents with evidential spans, achieving near-SotA performance.
-\switchcolumn
-\cvsection{Volunteering}
-\label{sec:org433c9e6}
+\subsection{Theory Group, IIIT Hyderabad}
+\subsubsection{Coordinator and Moderator \rside{Oct 2022 -- Mar 2024}}
+\begin{itemize}
+\item Led a team of Moderators to conduct and direct weekly seminars on Mathematics, Theoretical Computer Science, Philosophy and Music Theory.
+\item Organized club logistics and budgets for the year 2023-24.
+\end{itemize}
 
-\cvevent{Problem Committee and Jury}{ Panini Linguistics Olympiad}{ Jan 2024 -- Ongoing}{}
 
-Contributed and tested problems for the Panini Linguistics Olympiad and evaluated submissions for the National and Asia-Pacific rounds.
-\par\divider
+\section{Projects}
+%=================
+\subsection{Firefly \aux{\href{https://github.com/WackIIIT/Firefly}{Project Link \linkicon}} \rside{Mar 2025}}
+A Multi-agent documentation and code generator using the Language Server Protocol.
 
-\cvevent{Coordinator, Theory Group}{ Theory Group @ IIITH}{ May 2023 -- Jun 2024}{}
+\subsection{Essay Evaluation as Evidence-NLI \rside{Jan 2026 -- May 2026}}
+A novel formulation of the Essay Evaluation task as a variant of NL, and a novel GNN and SSM-based approach evaluated against State-of-the-Art methods.
 
-Organized discussions and seminars on various topics including theoretical CS, mathematics, music theory and physics.
+\subsection{Indic Morpho-semantic Circuits \aux{\href{https://github.com/DruhanShah/indic-morpho-semantic-circuits}{Project Link \linkicon}} \rside{Aug 2025 -- Dec 2025}}
+Extracting circuits from monolingual generative language models using known Mechanistic Interpretability methods, and analysing them with an emphasis on Dependency and Paninian Grammars.
 
-\par
-\cvsection{Achievements}
-\label{sec:orgeffe34e}
 
-\cvachievement{\faTrophy}{ Amazon ML Challenge}{ Rank 14 in India}{}
+\section{Awards and Contests}
+%===============
+\begin{description}
+  \item [2025] HackIIIT, DeccanCTF
+  \item [2024] Amazon ML Challenge
+  \item [2022] Dean's Merit List
+  \item [2021] Training Camps for the IMO and IOL
+\end{description}
 
-\divider
 
-\cvachievement{\faTrophy}{ Dean's List Award}{ Spring '22 and Monsoon '22}{}
+\section{Skills}
+%===============
+\begin{description}
+  \item[Programming] Python, C/C++, JavaScript, Rust, Lisps
+  \item[Interests] Abstract Algebra, Historical Linguistics, Music Theory, Free Software
+\end{description}
 
-\divider
 
-\cvachievement{\faTrophy}{ International Olympiads}{ Mathematics, Linguistics, Informatics, Astronomy}{}
-
-\par
-\cvsection{Skills}
-\label{sec:org088269b}
-\cvevent{Languages:}{}{}{}
-\cvtag{Python}
-\cvtag{C/C++}
-\cvtag{JavaScript}
-\cvtag{Lisp}
-\cvtag{Lua}
-\cvtag{\LaTeX}
-\par\divider
-
-\cvevent{Libraries and Tools:}{}{}{}
-\cvtag{Pytorch}
-\cvtag{Transformers}
-\cvtag{React}
-\cvtag{Astro.js}
-\cvtag{Vim}
-\cvtag{Emacs}
-\cvtag{Git}
-\cvtag{SLURM}
-\par
-\end{paracol}
-\end{document}
 \end{document}
